@@ -30,19 +30,19 @@ Usage
 
 Create the tMongoDBOutput2 component in your job and choose "Upsert with multiple operators" as the "Action on data".
 
-![Screenshot: tMongoDBOutput2 Basic Settings](images/screen_tMongoDBOutput2_Basic_Settings.png?raw=true)
+![Screenshot: tMongoDBOutput2 Basic Settings](images/screenshot_tMongoDBOutput2_Basic_Settings.png?raw=true)
 
 In the Advanced Setting tab, tick the checkbox to "Generate JSON Document" and provide names for the "Data node" and "Query node". Unchecking "Create empty element if needed" will avoid null values in your target document (unless you provide data types in the JSON tree definition, as the object is not null anymore -- also needs to be fixed, is an error in the original Talend component).
 
 Hit the "..." button to configure the output structure.
 
-![Screenshot: tMongoDBOutput2 Advanced Settings](images/screen_tMongoDBOutput2_Advanced_Settings.png?raw=true)
+![Screenshot: tMongoDBOutput2 Advanced Settings](images/screenshot_tMongoDBOutput2_Advanced_Settings.png?raw=true)
 
 In the JSON tree definition, create two subelements with the name for the query node (this will be the first part of the update) and the data node (this will be the action to be performed).
 
 The screenshot below shows how to execute $push into the details array. The tree will be transformed into the following upsert command (as no $ signs are allowed, it will be added automatically - you have to ensure that the direct children of the data node have to be MongoDB operations that can be prefixed with a $ sign).
 
-![Screenshot: tMongoDBOutput2 JSON Tree](images/screen_tMongoDBOutput2_JSON_Tree.png "Screenshot: tMongoDBOutput2 JSON Tree")
+![Screenshot: tMongoDBOutput2 JSON Tree](images/screenshot_tMongoDBOutput2_JSON_Tree.png?raw=True)
 
 The JSON Tree results in the following update statement:
 
@@ -66,5 +66,5 @@ db.collection.upsert(
 
 The sample document below in MongoDB shows that the "details" attribute contains values after the execution of the Talend job. Null values are ignored, i.e. only channelGroup is provided for the first element, for the second element, only channelGroup, cluster, and value are provided. The rest of the fields (e.g. channel) is null in the data stream and therefore ignored.
 
-![Screenshot: tMongoDBOutput2 Sample Document](images/screen_tMongoDBOutput2_Sample_Document.png?raw=true)
+![Screenshot: tMongoDBOutput2 Sample Document](images/screenshot_tMongoDBOutput2_Sample_Document.png?raw=true)
 
