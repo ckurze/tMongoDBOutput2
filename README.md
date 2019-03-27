@@ -42,7 +42,7 @@ In the JSON tree definition, create two subelements with the name for the query 
 
 The screenshot below shows how to execute $push into the details array. The tree will be transformed into the following upsert command (as no $ signs are allowed, it will be added automatically - you have to ensure that the direct children of the data node have to be MongoDB operations that can be prefixed with a $ sign).
 
-![Screenshot: tMongoDBOutput2 JSON Tree](images/screen_tMongoDBOutput2_JSON_Tree.png?raw=true)
+![Screenshot: tMongoDBOutput2 JSON Tree](images/screen_tMongoDBOutput2_JSON_Tree.png "Screenshot: tMongoDBOutput2 JSON Tree")
 
 The JSON Tree results in the following update statement:
 
