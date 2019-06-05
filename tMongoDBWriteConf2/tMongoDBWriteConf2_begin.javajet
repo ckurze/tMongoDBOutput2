@@ -391,8 +391,11 @@
 			   private void gatherKeysToRemove(net.sf.json.JSONObject jsonObject) {
 				   java.util.List<Object> keysToRemove = new java.util.ArrayList<>();
 				   for (Object o: jsonObject.keySet()) {
-					   if (jsonObject.get(o) == null || "null".equals(jsonObject.get(o).toString()) || "".equals(jsonObject.get(o).toString())) {
-						   keysToRemove.add(o);
+				   if (jsonObject.get(o) == null 
+						   || "null".equals(jsonObject.get(o).toString()) 
+						   || "".equals(jsonObject.get(o).toString()) 
+						   || (jsonObject.get(o) instanceof net.sf.json.JSONArray && ((net.sf.json.JSONArray) jsonObject.get(o)).isEmpty())) {
+			  			   keysToRemove.add(o);	
 					   }
 					   else if (jsonObject.get(o) != null && jsonObject.get(o) instanceof net.sf.json.JSONObject) {
 						   gatherKeysToRemove((net.sf.json.JSONObject) jsonObject.get(o)); 
